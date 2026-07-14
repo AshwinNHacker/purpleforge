@@ -1,0 +1,15 @@
+id: rule-t1059-001
+title: Encoded / Hidden PowerShell Execution
+technique_id: T1059.001
+level: high
+log_source: sysmon:1
+detection:
+  process: powershell.exe
+  command_line_contains_any:
+    - "-enc"
+    - "-EncodedCommand"
+    - "-W Hidden"
+    - "-NonI"
+description: >
+  Flags PowerShell launches using encoded or hidden-window flags,
+  a common technique to obscure the real command being run.

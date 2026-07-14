@@ -1,0 +1,13 @@
+id: rule-t1490
+title: Shadow Copy Deletion via vssadmin
+technique_id: T1490
+level: critical
+log_source: sysmon:1
+detection:
+  process: vssadmin.exe
+  command_line_contains_any:
+    - "delete shadows"
+description: >
+  Flags shadow-copy deletion, a common pre-encryption step used by
+  ransomware to prevent easy recovery. High-confidence, low-noise
+  signal — should almost always page someone.
