@@ -1,0 +1,15 @@
+id: rule-t1003-001
+title: Suspicious Access to LSASS Memory
+technique_id: T1003.001
+level: critical
+log_source: sysmon:10
+detection:
+  target_process: lsass.exe
+  granted_access_in:
+    - "0x1010"
+    - "0x1410"
+    - "0x1438"
+description: >
+  Flags process access to LSASS with access masks known to be used
+  for credential dumping (e.g. by tools mimicking Mimikatz/ProcDump
+  behaviour).

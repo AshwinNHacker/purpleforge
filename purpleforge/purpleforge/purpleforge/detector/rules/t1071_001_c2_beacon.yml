@@ -1,0 +1,16 @@
+id: rule-t1071-001
+title: Low-and-Slow Beacon to Unclassified Domain
+technique_id: T1071.001
+level: medium
+log_source: proxy
+detection:
+  bytes_out_below: 1000
+  interval_seconds_below: 120
+  dest_domain_contains_any:
+    - "cdn-"
+    - "-update"
+description: >
+  Flags small, regularly-spaced outbound connections to newly-seen /
+  unclassified domains — a common shape for C2 beacon traffic.
+  Interval + payload-size heuristics like this should always be
+  tuned against real baseline traffic before enabling in production.
