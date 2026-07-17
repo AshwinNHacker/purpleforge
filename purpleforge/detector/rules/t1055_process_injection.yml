@@ -1,0 +1,15 @@
+id: rule-t1055
+title: Cross-Process Thread Creation from Office Process
+technique_id: T1055
+level: critical
+log_source: sysmon:8
+detection:
+  source_process_in:
+    - "winword.exe"
+    - "excel.exe"
+    - "powerpnt.exe"
+  newthread_equals: true
+description: >
+  Flags an Office application creating a remote thread in another
+  process — a classic process-injection pattern for macro-delivered
+  payloads.

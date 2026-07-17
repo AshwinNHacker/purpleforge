@@ -1,0 +1,11 @@
+id: rule-t1021-001
+title: Interactive RDP Logon to Server from Workstation
+technique_id: T1021.001
+level: medium
+log_source: winevent:4624
+detection:
+  logon_type_equals: 10
+  host_prefix: "SRV-"
+description: >
+  Flags RDP (logon type 10) sessions landing on a server-tier host.
+  Pair with an allow-list of known admin jump-hosts to cut noise.

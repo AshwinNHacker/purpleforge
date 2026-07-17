@@ -1,0 +1,13 @@
+id: rule-t1547-001
+title: Persistence via Run Key Pointing at Temp Folder
+technique_id: T1547.001
+level: high
+log_source: sysmon:13
+detection:
+  registry_key_contains: "CurrentVersion\\Run"
+  registry_data_contains_any:
+    - "\\AppData\\Local\\Temp\\"
+    - "\\Users\\Public\\"
+description: >
+  Flags autorun registry entries that point at a binary living in a
+  user-writable temp directory — a strong persistence signal.

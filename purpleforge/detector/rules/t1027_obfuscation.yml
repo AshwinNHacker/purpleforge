@@ -1,0 +1,12 @@
+id: rule-t1027
+title: High-Entropy Script Dropped by PowerShell
+technique_id: T1027
+level: medium
+log_source: edr:file_write
+detection:
+  process: powershell.exe
+  entropy_above: 7.0
+  contains_base64_blob_equals: true
+description: >
+  Flags newly-written script files with entropy consistent with
+  base64/compressed payloads embedded inline.
